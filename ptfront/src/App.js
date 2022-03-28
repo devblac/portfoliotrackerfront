@@ -1,15 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
 import BasicButtonGroup from './components/menu';
+import Lifecycle from './Lifecycle';
+import FetchCard from './FetchCard';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          <BasicButtonGroup />
-        </p>
-      </header>
+      {/* <Lifecycle /> */}
+      <FetchCard />
     </div>
   );
 }
