@@ -1,9 +1,22 @@
-import { useState } from 'react';
+//import { useState } from 'react';
 import UserContext from './context/UserContext';
-import MoreInfo from './components/MoreInfo';
+import {
+  MoreInfo,
+  AppBar,
+  Coins,
+  Portfolio,
+  Stats,
+  Wiki,
+  ContactUs,
+  Register,
+  Login
+} from './components';
 import './App.css';
-import Menu from './components/menu';
 import React from 'react';
+
+import {
+  Routes, Route, Outlet, NavLink
+} from 'react-router-dom';
 
 function App() {
 
@@ -11,20 +24,27 @@ function App() {
     user: 'Julian',
     password: 'abc123'
   };
+  const style = ({ isActive }) => ({
+    fontWeight: isActive ? 'bold' : 'normal',
+  });
 
   return (
     <UserContext.Provider value={userData} >
       <div className="App">
-        <div id="Header">
-          <div id="Title"><h1>title</h1></div>
-          <div id="Profile"><h1>profile</h1></div>
-        </div>
-        <div id="Menu"><Menu /></div>
-        <div id="Content">
-          <h1>content</h1>
-          <h1>useContext</h1>
-          <MoreInfo />
-        </div>
+        <AppBar id="Header" />
+        <Routes>
+          <Route path="/" element={null} exact />
+          <Route path="/Coins" element={<Coins />}/>
+          <Route path="/Portfolio" element={<Portfolio />}/>
+          <Route path="/Stats" element={<Stats />}/>
+          <Route path="/Wiki" element={<Wiki />}/>
+          <Route path="/ContactUs" element={<ContactUs />}/>
+          <Route path="/Register" element={<Register />}/>
+          <Route path="/Login" element={<Login />}/>
+        </Routes>
+        <main style={{ padding: '1rem 0' }}>
+          <Outlet />
+        </main>
       </div>
     </UserContext.Provider>
   );

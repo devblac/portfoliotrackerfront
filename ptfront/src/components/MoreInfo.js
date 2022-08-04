@@ -2,7 +2,7 @@ import React from 'react';
 import useUser from '../hooks/useUser';
 
 export default function MoreInfo() {
-    const { user, password } = useUser();
+    const { user, password, isLogued } = useUser();
     console.log(user);
     return (
         <div>
