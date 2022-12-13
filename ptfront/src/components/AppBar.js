@@ -23,7 +23,7 @@ const settingsIsLogued = ['Profile', 'Logout'];
 const settingsNotlogued = ['Register', 'Login'];
 
 const ResponsiveAppBar = () => {
-    const { user, password, isLogued } = useUser();
+    const { isLogued } = useUser(); // user, password,
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -76,10 +76,10 @@ const ResponsiveAppBar = () => {
                 onClick={handleOpenNavMenu}
                 color="inherit"
                 >
-                <MenuIcon />
+                    <MenuIcon />
                 </IconButton>
                 <Menu
-                id="menu-appbar"
+                key="menu-appbar"
                 anchorEl={anchorElNav}
                 anchorOrigin={{
                     vertical: 'bottom',
@@ -98,7 +98,7 @@ const ResponsiveAppBar = () => {
                 >
                 {pages.map((page) => (
                     <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
+                        <Typography textAlign="center">{page}</Typography>
                     </MenuItem>
                 ))}
                 </Menu>
@@ -124,7 +124,7 @@ const ResponsiveAppBar = () => {
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                 {pages.map((page) => (
-                    <NavLink  to={'/'+page}>
+                    <NavLink key={page} to={'/'+page}>
                         <Button
                             key={page}
                             onClick={handleCloseNavMenu}
@@ -144,7 +144,7 @@ const ResponsiveAppBar = () => {
                 </Tooltip>
                 <Menu
                 sx={{ mt: '45px' }}
-                id="menu-appbar"
+                key="menu-appbar"
                 anchorEl={anchorElUser}
                 anchorOrigin={{
                     vertical: 'top',

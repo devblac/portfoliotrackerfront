@@ -6,7 +6,9 @@ import Stats from './Stats';
 import Wiki from './Wiki';
 import ContactUs from './ContactUs';
 import Register from './Register';
-import Login from './Login'
+import Login from './Login';
+import User from './User';
+import NotRegisteredUser from './NotRegisteredUser';
 
 export {
     AppBar,
@@ -17,5 +19,7 @@ export {
     Wiki,
     ContactUs,
     Register,
-    Login
+    Login,
+    User,
+    NotRegisteredUser
 };
