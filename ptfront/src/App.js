@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import UserContext from './context/UserContext';
 import {
-  // MoreInfo,
-  AppBar,
+  MoreInfo,
+  Home,
   Coins,
   Portfolio,
   Stats,
@@ -11,13 +11,17 @@ import {
   Register,
   Login,
   User,
-  NotRegisteredUser
+} from './views';
+import {
+  AppBar,
+  PersistLogin
 } from './components';
+import AuthMiddleware from './middleware/Auth';
 import './App.css';
 import React from 'react';
 
 import {
-  Routes, Route, Outlet, // NavLink
+  Routes, Route, Outlet, Navigate // NavLink
 } from 'react-router-dom';
 
 export const App = () => {
@@ -37,15 +41,22 @@ export const App = () => {
       <div className="App">
         <AppBar id="Header" />
         <Routes>
-          <Route path="/" element={<Coins />} exact />
-          <Route path="/Coins" element={<Coins />}/>
-          <Route path="/Wiki" element={<Wiki />}/>
-          <Route path="/ContactUs" element={<ContactUs />}/>
-          <Route path="/Register" element={<Register />}/>
-          <Route path="/Login" element={<Login />}/>
-          <Route path="/Portfolio" element={isLogged ? <Portfolio />: <NotRegisteredUser />}/>
-          <Route path="/Stats" element={isLogged ? <Stats /> : <NotRegisteredUser />}/>
-          <Route path="/User" element={isLogged ? <User /> : <NotRegisteredUser />}/>
+          <Route path="/" exact element={<PersistLogin />}/>
+            <Route index exact element={<Home />}/>
+            <Route path="/coins" element={<Coins />}/>
+            <Route path="/wiki" element={<Wiki />}/>
+            <Route path="/contactUs" element={<ContactUs />}/>
+            <Route path="/register" element={<Register />}/>
+            <Route path="/auth">
+              <Route path='login' element={<Login />}></Route>
+              <Route path='register' element={<Register />}></Route>
+              <Route path="user" element={<AuthMiddleware />}>
+                <Route index element={<User />}></Route>
+                <Route path="portfolio" element={ <Portfolio />}/>
+                <Route path="stats" element={<Stats />}/>
+              </Route>
+            </Route>
+          <Route path='*' element={<Navigate to='/' />}></Route>          
         </Routes>
         <main style={{ padding: '1rem 0' }}>
           <Outlet />

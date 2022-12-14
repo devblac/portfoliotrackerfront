@@ -19,7 +19,7 @@ import {
 import useUser from '../hooks/useUser';
 
 const pages = ['Home', 'Coins', 'Portfolio', 'Stats', 'Wiki', 'ContactUs'];
-const settingsIsLogued = ['Profile', 'Logout'];
+const settingsIsLogued = ['User', 'Logout'];
 const settingsNotlogued = ['Register', 'Login'];
 
 const ResponsiveAppBar = () => {
