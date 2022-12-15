@@ -16,13 +16,10 @@ const Portfolio = () => {
       }, [])
 
     return (
-        <Fragment>
+        <div>
           Portfolio
-          <p>
-          {coins.gecko_says}
-          </p>
           {/* {coins.map(coin => <li key={coin}>{coin}</li>)} */}
-        </Fragment>
+        </div>
     )
 }
 

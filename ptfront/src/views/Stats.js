@@ -32,7 +32,7 @@ const Stats = () => {
 
     useEffect(()=>{
         //axios.get('https://jsonplaceholder.typicode.com/posts')
-        axios.get('')
+        /* axios.get('')
         .then(rowData => {
           console.error('rowData', rowData)
           setRowData(rowData.data)
@@ -40,7 +40,7 @@ const Stats = () => {
         })
         .catch( err => {
           console.log(err)
-        })
+        }) */
       }, [])
 
       const buttonListener = useCallback( e => {
@@ -49,6 +49,7 @@ const Stats = () => {
      
     return (
         <div className="ag-theme-alpine" style={{width: '50em', height: '100em'}} >
+            
             Coins
               {/* {posts.map(post => <li key={post.id}>{post.title}</li>)} */}
               <AgGridReact
