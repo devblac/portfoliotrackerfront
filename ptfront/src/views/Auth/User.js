@@ -21,7 +21,7 @@ export default function User() {
 
     useEffect(() => {
         async function getUser() {
-            const { data } = await axiosPrivateInstance.get('auth/user')
+            const { data } = await axiosPrivateInstance.get('/user')
             setUser(data)
         }
 

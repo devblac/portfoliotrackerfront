@@ -1,11 +1,39 @@
 import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { AgGridReact } from 'ag-grid-react';
+import Highcharts from 'highcharts/highstock';
+import HighchartsReact from 'highcharts-react-official';
 
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import { axiosInstance } from '../axios';
 
 const axios = require('axios').default;
+
+
+const options = {
+  chart: {
+    type: 'spline'
+  },
+  title: {
+    text: 'BTC'
+  },
+  series: [
+    {
+      data: [1, 2, 1, 4, 3, 6]
+    }
+  ]
+};
+
+const options2 = {
+  title: {
+    text: 'ETH'
+  },
+  series: [
+    {
+      data: [1, 2, 1, 4, 3, 6, 7, 3, 8, 6, 9]
+    }
+  ]
+};
 
 const Stats = () => {
     const [response, setResponse] = useState([])
@@ -58,21 +86,16 @@ const Stats = () => {
     
     return (
         <div className="ag-theme-alpine" style={{width: '80em', height: '20em'}} >
-            
-              {/* {posts.map(post => <li key={post.id}>{post.title}</li>)} */}
-              <AgGridReact
-                ref={gridRef} // Ref for accessing Grid's API
-
-                rowData={rowData} // Row Data for Rows
-
-                columnDefs={columnDefs} // Column Defs for Columns
-                defaultColDef={defaultColDef} // Default Column Properties
-
-                animateRows={true} // Optional - set to 'true' to have rows animate when sorted
-                rowSelection='multiple' // Options - allows click selection of rows
-
-                onCellClicked={cellClickedListener} // Optional - registering for Grid Event
+             <div>
+                <HighchartsReact highcharts={Highcharts} options={options} />
+            </div>
+            <div>
+                <HighchartsReact
+                    highcharts={Highcharts}
+                    constructorType={'stockChart'}
+                    options={options2}
                 />
+            </div>
         </div>
     )
 }

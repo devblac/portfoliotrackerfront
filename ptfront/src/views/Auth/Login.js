@@ -26,7 +26,7 @@ export default function Login() {
     const { setAccessToken, setCSRFToken } = useAuth()
     const navigate = useNavigate()
     const location = useLocation()
-    const fromLocation = location?.state?.from?.pathname || '/'
+    // const fromLocation = location?.state?.from?.pathname || '/'
     const [loading, setLoading] = useState(false)
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
@@ -56,7 +56,7 @@ export default function Login() {
             setPassword()
             setLoading(false)
 
-            navigate(fromLocation, { replace: true })
+            // navigate(fromLocation, { replace: true })
         } catch (error) {
             setLoading(false)
             // TODO: handle errors

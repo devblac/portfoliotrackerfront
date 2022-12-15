@@ -45,15 +45,14 @@ export const App = () => {
             <Route index exact element={<Home />}/>
             <Route path="coins" element={<Coins />}/>
             <Route path="Wiki" element={<Wiki />}/>
-            <Route path="contactUs" element={<ContactUs />}/>
             <Route path="Portfolio" element={ <Portfolio />}/>
             <Route path="Stats" element={<Stats />}/>
-            <Route path="/auth">
-              <Route path='login' element={<Login />}></Route>
-              <Route path='register' element={<Register />}></Route>
-              <Route path="user" element={<AuthMiddleware />}>
-                <Route index element={<User />}></Route>
-              </Route>
+            <Route path="contactUs" element={<ContactUs />}/>
+            
+            <Route path='/login' element={<Login />}></Route>
+            <Route path='/register' element={<Register />}></Route>
+            <Route path="user" element={<AuthMiddleware />}>
+              <Route index element={<User />}></Route>
             </Route>
           <Route path='*' element={<Navigate to='/' />}></Route>          
         </Routes>

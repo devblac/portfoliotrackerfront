@@ -62,7 +62,7 @@ export default function Register() {
             setPasswordConfirmation()
             setLoading(false)
 
-            navigate('/auth/login')
+            navigate('/login')
         } catch (error) {
             setLoading(false)
             // TODO: handle errors
