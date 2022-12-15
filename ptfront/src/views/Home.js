@@ -15,7 +15,7 @@ const options = {
       type: 'spline'
     },
     title: {
-      text: 'My chart'
+      text: 'BTC'
     },
     series: [
       {
@@ -26,7 +26,7 @@ const options = {
 
   const options2 = {
     title: {
-      text: 'My stock chart'
+      text: 'ETH'
     },
     series: [
       {
@@ -50,7 +50,6 @@ const Home = () => {
   }, [])
     return (
         <React.Fragment>
-            Home
             <div>
 
             </div>
