@@ -28,7 +28,7 @@ const Coins = () => {
       console.log('cellClicked', event);
     }, []);   
 
-    useEffect(()=>{
+    useEffect(() => {
       if(localStorage.getItem('rowData_V1') == null ) {
         axios.get('https://api.coingecko.com/api/v3/coins/list')
         .then(rowData => {
@@ -44,9 +44,7 @@ const Coins = () => {
         console.error('new rowData', JSON.parse(rowData));
         setRowData(JSON.parse(rowData));
       }
-        //axios.get('https://jsonplaceholder.typicode.com/posts')
-        
-      }, [])
+    }, [])
 
       useEffect(()=>{
         const coinsToLocalStorage = JSON.stringify(rowData);
@@ -58,22 +56,16 @@ const Coins = () => {
       }, []);
      
     return (
-        <div className="ag-theme-alpine" style={{width: '50em', height: '100em'}} >
-            Coins
-              {/* {posts.map(post => <li key={post.id}>{post.title}</li>)} */}
-              <AgGridReact
-                ref={gridRef} // Ref for accessing Grid's API
-
-                rowData={rowData} // Row Data for Rows
-
-                columnDefs={columnDefs} // Column Defs for Columns
-                defaultColDef={defaultColDef} // Default Column Properties
-
-                animateRows={true} // Optional - set to 'true' to have rows animate when sorted
-                rowSelection='multiple' // Options - allows click selection of rows
-
-                onCellClicked={cellClickedListener} // Optional - registering for Grid Event
-                />
+        <div className="ag-theme-alpine" style={{ width: '50em', height: '100em' }} >
+          <AgGridReact
+            ref={gridRef}
+            rowData={rowData}
+            columnDefs={columnDefs}
+            defaultColDef={defaultColDef}
+            animateRows={true}
+            rowSelection='multiple'
+            onCellClicked={cellClickedListener}
+            />
         </div>
     )
 }
